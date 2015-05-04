@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html ng-app lang="zh-tw">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>貼網內容產生器 高雄信愛教會</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <style>
+        /* Sticky footer styles
+        -------------------------------------------------- */
+        html {
+          position: relative;
+          min-height: 100%;
+        }
+        body {
+          /* Margin bottom by footer height */
+          margin-bottom: 60px;
+        }
+        .footer {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          /* Set the fixed height of the footer here */
+          height: 60px;
+          background-color: #f5f5f5;
+        }
+
+
+        /* Custom page CSS
+        -------------------------------------------------- */
+        /* Not required for template or sticky footer method. */
+
+        .container {
+          width: auto;
+          max-width: 680px;
+          padding: 0 15px;
+        }
+        .container .text-muted {
+          margin: 20px 0;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <form>
+        <div class="container">
+            <div class="page-header">
+                <h1>貼網內容產生器 <small>高雄信愛教會</small></h1>
+            </div>
+
+
+            <h2>基本項目</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>講道主題</label>
+                        <input type="text" class="form-control" ng-model="topic" placeholder="請輸入講道主題" value="">
+                    </div>
+                    <div class="form-group">
+                        <label>講員</label>
+                        <input type="text" class="form-control" ng-model="lecturer" placeholder="講員姓名" value="">
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>講道日期(年月日)</label>
+                        <input type="text" class="form-control" ng-model="date" placeholder="2015年1月10日" ng-init="date='2015年月日'" value="">
+                    </div>
+                    <div class="form-group">
+                        <label>引用經文</label>
+                        <input type="text" class="form-control" ng-model="bible" placeholder="約翰福音 三章16節~三章18節" value="">
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Youtube</h2>
+                    <div class="form-group">
+                        <label>Youtube網址</label>
+                        <input type="text" class="form-control"  ng-model="Youtube" placeholder="Youtube網址" value=" ">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h2>投影片</h2>
+                        <label>投影片網址(Slider Share)</label>
+                        <input type="text" class="form-control" ng-model="slidershare" placeholder="網址" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="well">
+                <h2>貼文資料</h2>
+                <h3>標題 For Youtube</h3>
+                <input type="text" class="form-control" placeholder="網址" value="{{topic}} {{date}} {{lecturer}}主講" readonly>
+                <h3>內文 For youtube</h3>
+                <textarea rows="12" cols="60" id="youtube_content" class="form-control" readonly>
+日期：{{date}}
+主題：{{topic}}
+講員：{{lecturer}}
+經文：{{bible}}
+投影片：{{slidershare}}
+教會官網:{{web_url}}
+教會地址：{{address}}
+教會電話：{{phone}}
+教會官方臉書粉絲頁：{{fb}}
+                </textarea>
+<h3>內文 For SliderShare</h3>
+                <textarea rows="12" cols="60" id="youtube_content" class="form-control" readonly>
+日期：{{date}}
+主題：{{topic}}
+講員：{{lecturer}}
+經文：{{bible}}
+講道影音(講道視屏)：{{Youtube}}
+教會官網:{{web_url}}
+教會地址：{{address}}
+教會電話：{{phone}}
+教會官方臉書粉絲頁：{{fb}}
+                </textarea>
+            </div>
+            <hr />
+
+            <h2>固定項目</h2>
+            <div class="row ">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>信愛教會網站網址</label>
+                        <input type="text" class="form-control" ng-model="web_url" placeholder="網址" ng-init="web_url='http://www.faithandlove.org.tw/'">
+                    </div>
+                    <div class="form-group">
+                        <label>信愛教會電話</label>
+                        <input type="text" class="form-control" ng-model="phone" placeholder="電話" ng-init="phone='07-334-0356'">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>信愛教會fb粉絲團網址</label>
+                        <input type="text" class="form-control" ng-model="fb" placeholder="網址" ng-init="fb='https://zh-tw.facebook.com/kh.church.fh'">
+                    </div>
+                    <div class="form-group">
+                        <label>信愛教會地址</label>
+                        <input type="text" class="form-control" placeholder="地址" ng-init="address='高雄市苓雅區林森二路87號10F 辦公室：12F'" ng-model="address">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script>
+            function copyToClipboard(text) {
+                window.prompt("複製到剪貼簿: Ctrl+C, Enter", text);
+            }
+            function clear() {
+                window.prompt("複製到剪貼簿: Ctrl+C, Enter", text);
+            }
+        </script>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">程式設計:歐陽毅 <br />Email:<a href="mailto:wishnoblog@gmail.com">wishnoblog@gmail.com</a></p>
+        </div>
+    </footer>
+
+
+</body>
+</html>
