@@ -164,15 +164,42 @@
     </form>
 
 
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        <script>
-            function copyToClipboard(text) {
-                window.prompt("複製到剪貼簿: Ctrl+C, Enter", text);
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script>
+        function copyToClipboard(text) {
+            window.prompt("複製到剪貼簿: Ctrl+C, Enter", text);
+        }
+        function clear() {
+            window.prompt("複製到剪貼簿: Ctrl+C, Enter", text);
+        }
+    </script>
+    <script language="javascript" type="text/javascript">
+    window.onbeforeunload = function()
+    {
+        return "Are you sure want to close";
+    }
+    </script>
+    <script language="javascript" type="text/javascript">
+        window.onload = function() {
+            var btnRelease = document.getElementById('<%= btnRelease.ClientID %>');
+            //Find the button set null value to click event and alert will not appear for that specific button
+            function setGlobal() {
+                window.onbeforeunload = null;
             }
-            function clear() {
-                window.prompt("複製到剪貼簿: Ctrl+C, Enter", text);
-            }
-        </script>
+            $(btnRelease).click(setGlobal);
+
+            // Alert will not appear for all links on the page
+            $('a').click(function() {
+                window.onbeforeunload = null;
+
+            });
+            window.onbeforeunload = function() {
+                return '您確定要離開此頁面?';
+            };
+        };
+        
+    </script>
+
     <footer class="footer">
         <div class="container">
             <p class="text-muted">程式設計:歐陽毅 <br />Email:<a href="mailto:wishnoblog@gmail.com">wishnoblog@gmail.com</a></p>
